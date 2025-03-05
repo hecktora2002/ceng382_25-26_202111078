@@ -6,19 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="home">
+
     <div class="login-box">
         <h2>The Airbender Login</h2>
         <input type="text" placeholder="Airbender Name">
         <input type="password" placeholder="Airbender Password">
-        <button class="button-brown"></button>
-        <span class="close-btn" onclick="closeLogin()">&times;</span>
-    </div>
-    <div class="container">
-        <a href="index.html"><img src="Air_symbol.webp" alt="Back to Home" class="image-button"></a>
+        <button class="button-brown">Giriş Yap</button>
     </div>
 
-    
+    <div class="container">
+        <a href="index.html">
+            <img src="Air_symbol.webp" alt="Back to Home" class="image-button">
+        </a>
+    </div>
+
+    <div id="clock"></div>
+
+    <script>
+        // Saat Güncelleme Fonksiyonu
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // "H" tuşuna basınca index.html sayfasına dön
+        document.addEventListener("keydown", function(event) {
+            if (event.key.toLowerCase() === "h") {
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+
 </body>
 </html>

@@ -174,3 +174,37 @@ input {
     transform: translateY(-5px);
     box-shadow: 0 0 30px rgba(139, 69, 19, 1);
 }
+
+/* styles.css'e ekleyin */
+/* styles.css'deki #clock stilini güncelleyin */
+#clock {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    color: #bfd6fb; /* Neon yeşil renk */
+    text-shadow: 0 0 10px #bfd6fb;
+    font-family: 'Orbitron', sans-serif;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 30px;
+    border-radius: 15px;
+    border: 2px solid #bfd6fb;
+    box-shadow: 0 0 20px rgba(201, 227, 246, 0.3);
+    letter-spacing: 3px;
+}
+
+#login-screen {
+    display: none; /* Sayfa açıldığında gizli olacak */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
