@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Login kutusunun bulunduğu ana container -->
+    <!-- "Bir login sayfası oluştur, ancak kullanıcı adı ve şifreyi kontrol etme" yazıldığında -->
+    <div class="login-container" id="loginBox">
+        <h2>Ancient Login</h2> <!-- Başlık: 'Login' sayfası için başlık -->
+        <input type="text" placeholder="Enter Name"> <!-- Kullanıcı adı girişi -->
+        <input type="password" placeholder="Secret Code"> <!-- Şifre girişi -->
+        
+        <!-- Elementler burada yer alıyor -->
+        <!-- "Avatar tıklamasıyla açılan login kutusu ve element simgeleri ekle" yazıldığında -->
+        <div class="elements-container">
+            <!-- Farklı elementlerin simgeleri -->
+            <div class="element fire">🔥</div> <!-- Ateş elementi -->
+            <div class="element water">💧</div> <!-- Su elementi -->
+            <div class="element earth">🌿</div> <!-- Toprak elementi -->
+            <div class="element air">🌪️</div> <!-- Hava elementi -->
+        </div>
+    </div>
+    
+    <!-- Avatar görselini tıklanabilir yapan container -->
+    <!-- "Avatar tıklamasıyla açılan login kutusu" yazıldığında -->
+    <div class="avatar-container" onclick="toggleLogin()">
+        <div class="avatar">
+            <div class="head">
+                <div class="head-shadow"></div> <!-- Baş gölgesi -->
+                <div class="arrow"></div> <!-- Ok simgesi -->
+                <div class="arrow-point"></div> <!-- Ok uç simgesi -->
+                <div class="eyebrow eyebrow-left"></div> <!-- Sol kaş -->
+                <div class="eyebrow eyebrow-right"></div> <!-- Sağ kaş -->
+                <div class="ear ear-left"></div> <!-- Sol kulak -->
+                <div class="ear ear-right"></div> <!-- Sağ kulak -->
+                <div class="eyes"></div> <!-- Gözler -->
+                <div class="eyes eye-right"></div> <!-- Sağ göz -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Login kutusunun gösterilmesi ve gizlenmesi işlevi
+        // Burada işlevsiz bir login sistemi yapılıyor
+        // "İşlevsiz bir login sistemi kur" yazıldığında bu fonksiyon yazılır.
+        function toggleLogin() {
+            const loginBox = document.getElementById("loginBox");
+            
+            // Burada login kutusunu göstermek ve gizlemek işlevi uyguluyoruz, fakat bu işlem hiçbir şekilde veri doğrulama yapmaz.
+            if (loginBox.style.display === "none" || loginBox.style.display === "") {
+                loginBox.style.display = "block"; // Login kutusunu görünür yap
+                setTimeout(() => {
+                    loginBox.style.opacity = "1"; // Opaklık geçişi ekle
+                    loginBox.style.transform = "translate(-50%, -50%) translateY(0)"; // Konumlandırma
+                }, 10);
+            } else {
+                loginBox.style.opacity = "0"; // Login kutusunu gizle
+                loginBox.style.transform = "translate(-50%, -50%) translateY(50px)"; // Konumu aşağı kaydır
+                setTimeout(() => {
+                    loginBox.style.display = "none"; // Login kutusunu tamamen gizle
+                }, 500);
+            }
+        }
+    </script>
+
+</body>
+</html>
