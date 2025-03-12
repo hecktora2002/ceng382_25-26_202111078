@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Table</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+            font-family: 'IM Fell English SC', serif;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+        th, td {
+            border: 1px solid #FFD700;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #FFD700;
+            color: black;
+        }
+        tr:hover {
+            background: rgba(255, 255, 0, 0.3);
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+            font-family: 'IM Fell English SC', serif;
+        }
+        .delete-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .delete-btn:hover {
+            background: darkred;
+        }
+        .reset-btn {
+            background: darkblue;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .reset-btn:hover {
+            background: navy;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Class Information</h2>
+        <input type="text" id="className" placeholder="Class Name">
+        <input type="number" id="classSize" placeholder="Number of People">
+        <input type="text" id="classDesc" placeholder="Description">
+        <button onclick="addClass()">Add Class</button>
+        <button class="reset-btn" onclick="resetTable()">Reset Table</button>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Class Name</th>
+                    <th>Number of People</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="classTable">
+                <!-- Dinamik Veriler -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function addClass() {
+            let name = document.getElementById("className").value;
+            let size = document.getElementById("classSize").value;
+            let desc = document.getElementById("classDesc").value;
+
+            if (name && size && desc) {
+                let table = document.getElementById("classTable");
+                let row = table.insertRow();
+
+                row.insertCell(0).textContent = name;
+                row.insertCell(1).textContent = size;
+                row.insertCell(2).textContent = desc;
+
+                // Silme butonu ekleme
+                let deleteCell = row.insertCell(3);
+                let deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Delete";
+                deleteBtn.classList.add("delete-btn");
+                deleteBtn.onclick = function () {
+                    row.remove();
+                };
+                deleteCell.appendChild(deleteBtn);
+
+                // Satıra tıklanınca vurgulama ve konsola yazdırma
+                row.addEventListener("click", function() {
+                    row.style.backgroundColor = "#FFD700";
+                    console.log(`Selected: ${name}`);
+                });
+
+                // Formu sıfırla
+                document.getElementById("className").value = "";
+                document.getElementById("classSize").value = "";
+                document.getElementById("classDesc").value = "";
+            }
+        }
+
+        // ✅ Tüm tabloyu sıfırlayan fonksiyon
+        function resetTable() {
+            document.getElementById("classTable").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
